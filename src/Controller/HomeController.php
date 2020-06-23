@@ -12,6 +12,7 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        // throw new \Exception('Salut, je suis le message de l exception !');
         return $this->render('home/index.html.twig');
     }
 }
