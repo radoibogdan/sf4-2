@@ -1,0 +1,33 @@
+{% extends "_template.html.twig" %}
+
+{% block title %}Produits{% endblock %}
+
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">Liste des produits: {{ product_list|length}}</h1>
+
+        {# Inclusion de fichiers + passage de variable #}
+        {% include "includes/product_list.html.twig" with {products: product_list} %}
+
+    </div>
+{% endblock %}
+
+{# {% block content2 %}
+<div class="columns is-multiline">
+    {% for product in product_list %}
+        <div class="column is-one-quarter">
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">{{ product.name }}</p>
+                    <p class="content">{{ product.description }}</p>
+                    <h6>
+                        {{product.priceFloat|number_format(2, '.', ' ') }} €
+                        | {{ product.createdAt|date('d/m/Y') }}
+                    </h6>
+                </div>
+            </div>
+        </div> 
+    {% endfor %}
+</div>
+{% endblock %} #}
