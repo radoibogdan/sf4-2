@@ -12,6 +12,7 @@ class UserFixtures extends Fixture
     /** @var UserPasswordEncoderInterface */
     private $passwordEncoder;
     /**
+     * L'autowiring est disponibles dans le constructeur des fixtures 
      * Dans la majorité des classes, on peut récupérer des services par autowiring uniquement dans le constructeur
      * UserPasswordEncoderInterface - le service qui permet de hasher les mdp
      */

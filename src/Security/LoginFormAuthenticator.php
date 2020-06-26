@@ -41,6 +41,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     /**
      * Etape 1 : vérifier s'il y a une tentative de connexion
+     * const LOGIN_ROUTE = 'app_login';
      */
     public function supports(Request $request)
     {
