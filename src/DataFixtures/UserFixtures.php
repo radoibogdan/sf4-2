@@ -14,6 +14,7 @@ class UserFixtures extends Fixture
     /**
      * L'autowiring est disponibles dans le constructeur des fixtures 
      * Dans la majorité des classes, on peut récupérer des services par autowiring uniquement dans le constructeur
+     * php bin/console debug:autowiring
      * UserPasswordEncoderInterface - le service qui permet de hasher les mdp
      */
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
