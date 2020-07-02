@@ -1,0 +1,15 @@
+{% extends '_admin_template.html.twig' %}
+
+{% block title %}Modifier le produit{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">Modifier le produit {{ product.name }}</h1>
+        <h2 class="subtitle">Crée le {{ product.createdAt|date('d/m/Y') }}</h2>
+
+        {% include "includes/flashes.html.twig" %}
+
+        {% include "admin_product/_product_form_html.twig" %}
+
+    </div>
+{% endblock %}

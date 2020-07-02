@@ -3,16 +3,16 @@
 {% block title %}Mon Profil{% endblock %}
 
 {% block content %}
-<div class="section">
-    <h1 class="title">Mon Profil</h1>
-    {% include 'includes/flashes.html.twig' %}
+    <div class="section">
+        <h1 class="title">Mon Profil</h1>
+        {% include 'includes/flashes.html.twig' %}
 
-    {# loginForm passed from the controller and created by calling to the $loginForm->createView() method #}
-    {{ form_start(profile_form)}}
-        {{ form_row(profile_form.email,{
-            label:'Mon adresse'
-        }) }}
-        <button type="submit" class="button is-primary is-fullwidth">Enregistrer</button>
-    {{ form_end(profile_form)}}
-</div>
+        {# loginForm passed from the controller and created by calling to the $loginForm->createView() method #}
+        {{ form_start(profile_form)}}
+            {{ form_row(profile_form.email,{
+                label:'Mon adresse'
+            }) }}
+            <button type="submit" class="button is-primary is-fullwidth">Enregistrer</button>
+        {{ form_end(profile_form)}}
+    </div>
 {% endblock %}

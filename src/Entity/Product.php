@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\HasLifecycleCallbacks()
+ * HasLifecycleCallbacks + méthode prePersist =>
+ * Modifier l’entité pour enregister la date de création du produit à la date ou on valide le produit
  */
 class Product
 {
@@ -36,6 +40,18 @@ class Product
      * @ORM\Column(type="date")
      */
     private $createdAt;
+
+    /**
+     * Méthode exécutée avant l'insertion en base
+     * @ORM\PrePersist()
+     * Modifier l’entité pour enregister la date de création du produit à la date ou on valide le produit
+     */
+    public function prePersist()
+    {
+        if ($this->createdAt === null) {
+            $this->createdAt = new \DateTime();
+        }
+    }
 
     public function getId(): ?int
     {

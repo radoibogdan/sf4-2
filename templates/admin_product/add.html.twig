@@ -1,0 +1,14 @@
+{% extends '_admin_template.html.twig' %}
+
+{% block title %}Nouveau produit{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">Nouveau produit</h1>
+
+        {% include "includes/flashes.html.twig" %}
+
+        {% include "admin_product/_product_form_html.twig" %}
+
+    </div>
+{% endblock %}

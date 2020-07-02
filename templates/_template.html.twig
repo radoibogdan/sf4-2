@@ -22,6 +22,12 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_product_list') }}" class="navbar-item">
+                        <span class="icon"><i class="fas fa-lock"></i></span>
+                        <span>Back-Office</span>
+                    </a>
+                {% endif %}
                 <a class="navbar-item" href="{{ path('product_list') }}">
                     Produits
                 </a>
