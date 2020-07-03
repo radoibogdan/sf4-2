@@ -36,7 +36,8 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {# if is_granted('IS_AUTHENTICATED_FULLY') #}
+                        {% if app.user %}
                             <a class="button is-primary is-small" href="{{ path('account_profile') }}">
                             <span class="icon"><i class="fas fa-user-circle"></i></span>
                             <span><strong>{{app.user.username}}</strong></span>

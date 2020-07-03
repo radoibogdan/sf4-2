@@ -18,6 +18,7 @@
                 <tr>
                     <th>#</th>
                     <th>Nom de la catégorie</th>
+                    <th>Nombre de produits</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                     <tr>
                         <td>{{ category.id }}</td>
                         <td>{{ category.name }}</td>
+                        <td>{{ category.getProducts|length }}</td>
                         <td>
                             <div class="buttons is-pulled-right">
                                 <a href="{{ path('admin_category_edit', {id:category.id}) }}" class="button is-success">Modifier</a>
