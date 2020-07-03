@@ -43,7 +43,6 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
     /**
      * Liste des classes de fixtures qui doivent être chargés avant celle-ci
      */
-
      public function getDependencies()
      {
         return [
