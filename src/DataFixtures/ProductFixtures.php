@@ -2,13 +2,15 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
 // Le système de fixture de Doctrine
-class ProductFixtures extends Fixture
+class ProductFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -25,9 +27,27 @@ class ProductFixtures extends Fixture
                 ->setPrice($faker->numberBetween(1000,3500))
                 ->setCreatedAt($faker->dateTimeBetween('-6 months'))
             ;
+
+            // Récupération aléatoire d'une catégorie par une référence
+            $categoryReference = 'category_' . $faker->numberBetween(0, 2);
+            /** @var Category $category */
+            $category = $this->getReference($categoryReference); // getReference -> renvoie une entité Category
+            $product->setCategory($category);
+
             $manager->persist($product);
         }
         // exécute réelement les injections
         $manager->flush();
     }
+
+    /**
+     * Liste des classes de fixtures qui doivent être chargés avant celle-ci
+     */
+
+     public function getDependencies()
+     {
+        return [
+            CategoryFixtures::class
+        ];
+     }
 }
