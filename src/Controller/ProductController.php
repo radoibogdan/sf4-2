@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,12 +14,17 @@ class ProductController extends AbstractController {
     /**
      * @Route("/product", name="product_list")
      */
-    public function index(ProductRepository $repository): Response
+    public function index(ProductRepository $repository, CategoryRepository $categoryRepository): Response
     {
         // Récupération de tous les produits
         $product_list = $repository->findAll();
+
+        // Récupération de toutes les catégories
+        $categories = $categoryRepository->findAll();
+
         return $this->render('product/index.html.twig', [
-            'product_list' => $product_list
+            'product_list' => $product_list,
+            'categories' => $categories
         ]);
     }
 
@@ -35,6 +41,22 @@ class ProductController extends AbstractController {
         ]);
     }
 
+    /** 
+    * @Route("/product/{id}/category_show", name="category_show")
+    */
+    public function show_products_from_category($id, CategoryRepository $categoryRepository, ProductRepository $productRepository)
+    {
+        $products = $productRepository->findBy([
+            'category' => $id
+        ]);
+
+        $categories = $categoryRepository->findAll();
+
+        return $this->render('product/show_category.html.twig', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
+    }
 
 }
 
