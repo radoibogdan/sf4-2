@@ -25,7 +25,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category", orphanRemoval=true)
      */
     private $products;
 
