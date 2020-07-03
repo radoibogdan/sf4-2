@@ -1,0 +1,12 @@
+{% extends '_admin_template.html.twig' %}
+
+{% block title %}Liste des produits dans la catégorie: {{ products|length}}{% endblock %}
+
+{% block content %}
+    <div class="section">
+        <h1 class="title">Liste des produits dans la catégorie: {{ products|length}}</h1>
+
+        {% include "includes/product_list.html.twig" %}
+
+    </div>
+{% endblock %}
