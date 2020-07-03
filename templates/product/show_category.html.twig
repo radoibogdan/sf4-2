@@ -6,7 +6,7 @@
     <div class="section">
         <h1 class="title">Liste des produits dans la catégorie: {{ products|length}}</h1>
 
-        {% include "includes/product_list.html.twig" %}
+        {% include "includes/product_list.html.twig" with {products:products, categories:categories} %}
 
     </div>
 {% endblock %}
