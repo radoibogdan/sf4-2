@@ -19,8 +19,10 @@
             <p class="content">
                 {{product.description}}
             </p>
+
+            <small class="has-background-success has-text-white">{{product.category.name}}</small>
             
-            <div class="tags has-addons are-large">
+            <div class="tags has-addons are-large mt-4">
                 <span class="tag">
                     {{product.PriceFloat|number_format(2 , '.' , ' ')}} {# . pour les centimes #}
                 </span>
