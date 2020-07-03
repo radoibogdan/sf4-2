@@ -1,3 +1,16 @@
+<section>
+<h1 class="title">Catégories</h1>
+    <div class="columns is-multiline">
+        {% for category in categories %}
+            <div class="column is-one-third">
+                <div class="box has-text-centered has-text-weight-bold">
+                    <a href="{{ path('category_show',{id: category.id}) }}" class="has-text-primary">{{category.name}}</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<h1 class="title mt-4">Accueil - Nouveautés</h1>
 <div class="columns is-multiline">
     {% for product in products %}
         <div class="column is-one-third"> {# is-one-half / is-one-quarter #}
@@ -16,6 +29,14 @@
                                 </a>
                                 <small>{{product.createdAt|date('d/m/Y')}}</small>
                                 <br>
+                                <a href="{{ path('category_show',{id: product.category.id}) }}" class="has-background-success has-text-white">
+                                    <strong>{{product.category.name}}</strong>
+                                </a>
+                                {#
+                                    <br>
+                                    <small class="has-background-success has-text-white">{{product.category.name}}</small>
+                                    <br> 
+                                #}
                                 {{product.description|slice(0,50)}}
                             </p>
                             <div class="tags has-addons">
